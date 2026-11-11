@@ -102,17 +102,18 @@ async function post(o) {
   const r = await fetch(API, {method: 'POST', headers: {'Content-Type': 'text/plain;charset=utf-8'}, body: JSON.stringify(Object.assign({t: tok}, o))});
   return r.json();
 }
+let gsiOn = false;
 function showLogin(m) {
   $('#app').hidden = true; $('#login').hidden = false; $('#msg').textContent = m || ''; localStorage.removeItem('jt');
   const go = () => { if (!window.google) return setTimeout(go, 300);
-    google.accounts.id.initialize({client_id: CID, callback: (r) => { tok = r.credential; localStorage.setItem('jt', tok); load(); }, auto_select: true});
+    if (!gsiOn) { google.accounts.id.initialize({client_id: CID, callback: (r) => { tok = r.credential; localStorage.setItem('jt', tok); load(); }, auto_select: true}); gsiOn = true; }
     google.accounts.id.renderButton($('#gbtn'), {theme: 'filled_blue', size: 'large', text: 'signin_with', width: 280}); };
   go();
 }
 async function load() {
   $('#login').hidden = true; let res;
   try { res = await post({a: 'init'}); }
-  catch (e) { const c = localStorage.getItem('jc'); if (c) { Object.assign(S, JSON.parse(c)); $('#off').hidden = false; return start(); } return showLogin('Tiada sambungan internet.'); }
+  catch (e) { const c = localStorage.getItem('jc'); if (c) { Object.assign(S, JSON.parse(c)); $('#off').hidden = false; return start(); } return showLogin(navigator.onLine ? 'Tidak dapat hubungi pelayan Apps Script. Semak URL API dan tetapan Deploy (Who has access: Anyone).' : 'Tiada sambungan internet.');
   if (res.err === 'auth') return showLogin('Sesi tamat. Sila log masuk semula.');
   if (res.err === 'noaccess') return showLogin('Emel ' + res.email + ' belum didaftarkan. Hubungi Ketua/Penolong Ketua Jabatan.');
   if (res.err) return showLogin(res.err);

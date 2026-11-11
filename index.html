@@ -113,7 +113,7 @@ function showLogin(m) {
 async function load() {
   $('#login').hidden = true; let res;
   try { res = await post({a: 'init'}); }
-  catch (e) { const c = localStorage.getItem('jc'); if (c) { Object.assign(S, JSON.parse(c)); $('#off').hidden = false; return start(); } return showLogin(navigator.onLine ? 'Tidak dapat hubungi pelayan Apps Script. Semak URL API dan tetapan Deploy (Who has access: Anyone).' : 'Tiada sambungan internet.');
+  catch (e) { const c = localStorage.getItem('jc'); if (c) { Object.assign(S, JSON.parse(c)); $('#off').hidden = false; return start(); } return showLogin(navigator.onLine ? 'Tidak dapat hubungi pelayan Apps Script. Semak URL API dan tetapan Deploy (Who has access: Anyone).' : 'Tiada sambungan internet.'); }
   if (res.err === 'auth') return showLogin('Sesi tamat. Sila log masuk semula.');
   if (res.err === 'noaccess') return showLogin('Emel ' + res.email + ' belum didaftarkan. Hubungi Ketua/Penolong Ketua Jabatan.');
   if (res.err) return showLogin(res.err);
@@ -151,7 +151,7 @@ function home() {
 }
 function photo(u) { const m = /(?:\/d\/|[?&]id=)([\w-]{20,})/.exec(u || ''); return m ? `https://drive.google.com/thumbnail?id=${m[1]}&sz=w300` : u; }
 function org() {
-  const st = S.data.Staf.filter((s) => s['Aktif'] !== 'Tidak'), ids = new Set(st.map((s) => s['ID']));
+  const st = S.data.Staf.filter((s) => s['Aktif'] !== 'Tidak' && s['Jawatan'] !== 'Admin'), ids = new Set(st.map((s) => s['ID']));
   const kids = (id) => st.filter((s) => s['Penyelia'] === id).sort((a, b) => a['Susunan'] - b['Susunan']);
   const nd = (s) => { const k = kids(s['ID']), ini = s['Nama'].replace(/^(Dr\.?|Prof\.?)\s*/i, '')[0];
     return `<li><div class="oc">${s['Gambar'] ? `<img class="av" src="${esc(photo(s['Gambar']))}" alt="" loading="lazy" referrerpolicy="no-referrer">` : `<div class="av">${esc(ini)}</div>`}<div><b>${esc(s['Nama'])}</b><small>${esc(s['Jawatan'])}</small>${s['Catatan'] ? `<em>${esc(s['Catatan'])}</em>` : ''}</div></div>${k.length ? '<ul>' + k.map(nd).join('') + '</ul>' : ''}</li>`; };

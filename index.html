@@ -1,0 +1,214 @@
+<!doctype html>
+<html lang="ms">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>JPPI IPGKTHO</title>
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#0b3a7a">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="JPPI">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<link rel="icon" href="icons/icon-192.png">
+<script src="https://accounts.google.com/gsi/client" async defer></script>
+<style>
+:root{--b:#0b3a7a;--b2:#1566b8;--g:#d4a017;--bg:#f2f5fa;--t:#17243a;--m:#5b6b84;--l:#dbe3ef;--r:12px}
+*{box-sizing:border-box}html,body{margin:0}
+body{font:15px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;background:var(--bg);color:var(--t);-webkit-text-size-adjust:100%}
+[hidden]{display:none!important}
+button,input,select,textarea{font:inherit}
+.btn{border:0;background:var(--b);color:#fff;padding:9px 16px;border-radius:9px;cursor:pointer;min-height:40px}
+.btn.s{background:#fff;color:var(--b);border:1px solid var(--l)}.btn.d{background:#b42318}.btn.sm{padding:5px 10px;min-height:32px;font-size:13px}
+#login{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;padding:24px;text-align:center;background:linear-gradient(160deg,#fff,#e5edf9)}
+#login img{width:min(420px,85vw)}#msg{color:#b42318;max-width:420px}
+header{position:sticky;top:0;z-index:5;display:flex;align-items:center;gap:10px;padding:calc(10px + env(safe-area-inset-top)) 16px 10px;background:var(--b);color:#fff}
+header h1{font-size:17px;margin:0;flex:1}header small{opacity:.85}
+#nav{position:fixed;z-index:6;background:#fff;display:flex}
+#nav img{display:none}
+#nav a{display:flex;flex-direction:column;align-items:center;gap:1px;padding:7px 12px;font-size:11px;color:var(--m);cursor:pointer;white-space:nowrap;border-radius:10px;flex:0 0 auto;user-select:none}
+#nav a i{font-style:normal;font-size:20px}#nav a.on{color:var(--b);background:#e6eefb;font-weight:600}
+@media(max-width:899px){#nav{left:0;right:0;bottom:0;overflow-x:auto;padding:4px 6px calc(4px + env(safe-area-inset-bottom));border-top:1px solid var(--l)}main{padding-bottom:96px!important}}
+@media(min-width:900px){#nav{top:0;bottom:0;left:0;width:224px;flex-direction:column;padding:14px 10px;border-right:1px solid var(--l);overflow-y:auto}#nav img{display:block;width:100%;margin-bottom:10px}
+#nav a{flex-direction:row;gap:10px;font-size:14px;padding:10px 12px}#content{margin-left:224px}}
+main{padding:16px;max-width:1200px;margin:0 auto}
+h2{margin:6px 0 12px;color:var(--b)}
+.card{background:#fff;border:1px solid var(--l);border-radius:var(--r);padding:14px;margin-bottom:14px}
+.grid{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));margin-bottom:14px}
+.st{background:#fff;border:1px solid var(--l);border-left:4px solid var(--g);border-radius:var(--r);padding:12px 14px;cursor:pointer}
+.st b{display:block;font-size:28px;color:var(--b);line-height:1.1}.st span{color:var(--m);font-size:13px}.st small{display:block;color:var(--m);font-size:11px}
+.two{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
+.bar{display:flex;align-items:center;gap:8px;margin:5px 0;font-size:13px}.bar div{height:14px;background:linear-gradient(90deg,var(--b2),var(--b));border-radius:7px;min-width:4px}.bar span:first-child{width:38%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.tools{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:10px}.tools input{flex:1;min-width:160px;padding:9px 12px;border:1px solid var(--l);border-radius:9px}
+.chips{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px}.chips span{background:#e6eefb;color:var(--b);border-radius:20px;padding:3px 11px;font-size:12px}
+.tw{overflow-x:auto;background:#fff;border:1px solid var(--l);border-radius:var(--r)}
+table{border-collapse:collapse;width:100%}th,td{padding:9px 11px;text-align:left;border-bottom:1px solid var(--l);vertical-align:top}th{background:#eef3fb;font-size:13px;color:var(--b);white-space:nowrap}
+td a{color:var(--b2)}.na{white-space:nowrap}
+@media(max-width:700px){thead{display:none}table,tbody,tr,td{display:block}tr{padding:8px 4px;border-bottom:8px solid var(--bg)}td{border:0;padding:3px 10px}td::before{content:attr(data-l) ": ";font-weight:600;color:var(--m);font-size:12px}}
+dialog{border:0;border-radius:14px;width:min(560px,94vw);max-height:92vh;padding:18px;overflow:auto}dialog::backdrop{background:#0008}
+label{display:block;font-size:13px;color:var(--m);margin:10px 0 3px}dialog input,dialog select,dialog textarea{width:100%;padding:9px 11px;border:1px solid var(--l);border-radius:9px;font-size:16px}
+.row{display:flex;gap:8px;justify-content:flex-end;margin-top:16px}
+details{border-bottom:1px solid var(--l);padding:8px 0}summary{cursor:pointer;font-weight:600;color:var(--b)}li{margin:3px 0}
+.off{background:#fff4d6;color:#7a5b00;padding:6px 16px;font-size:13px;text-align:center}
+#hint{position:fixed;left:10px;right:10px;bottom:calc(84px + env(safe-area-inset-bottom));background:#fff;border:1px solid var(--g);border-radius:12px;padding:12px;z-index:9;font-size:14px}
+.org{overflow-x:auto;padding:6px 0 14px}
+.tree ul{display:flex;justify-content:center;padding:20px 0 0;margin:0;position:relative}.tree>ul{padding-top:0}
+.tree li{list-style:none;text-align:center;position:relative;padding:20px 6px 0;margin:0}.tree>ul>li{padding-top:0}
+.tree li::before,.tree li::after{content:"";position:absolute;top:0;right:50%;border-top:2px solid #aebbd1;width:50%;height:20px}
+.tree li::after{right:auto;left:50%;border-left:2px solid #aebbd1}
+.tree li:only-child::before,.tree li:only-child::after,.tree>ul>li::before,.tree>ul>li::after{display:none}
+.tree li:first-child::before,.tree li:last-child::after{border:0 none}
+.tree li:last-child::before{border-right:2px solid #aebbd1;border-radius:0 6px 0 0}.tree li:first-child::after{border-radius:6px 0 0 0}
+.tree ul ul::before{content:"";position:absolute;top:0;left:50%;border-left:2px solid #aebbd1;height:20px}
+.oc{display:inline-block;width:158px;background:#fff;border:1px solid var(--l);border-top:3px solid var(--g);border-radius:12px;padding:10px 8px;vertical-align:top}
+.oc b{display:block;font-size:13px;line-height:1.25}.oc small{display:block;color:var(--m);font-size:11.5px;margin-top:2px}.oc em{display:block;font-size:11px;color:#8a5a00;margin-top:3px}
+.av{width:62px;height:62px;border-radius:50%;object-fit:cover;border:2px solid var(--b);margin:0 auto 6px;background:#e6eefb;color:var(--b);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:20px}
+@media(max-width:700px){.tree ul{display:block;padding:0 0 0 16px;margin-left:24px;border-left:2px solid #aebbd1}.tree>ul{border:0;margin:0;padding:0}.tree li{text-align:left;padding:10px 0 0 4px}.tree li::before,.tree li::after,.tree ul ul::before{display:none}
+.oc{width:100%;display:flex;gap:10px;align-items:center;text-align:left}.oc .av{margin:0;flex:0 0 46px;width:46px;height:46px;font-size:16px}}
+</style>
+</head>
+<body>
+<div id="login" hidden>
+  <img src="icons/logo.png" alt="JPPI">
+  <div><b>Sistem Dashboard JPPI IPGKTHO</b><br><small>Log masuk dengan akaun Gmail yang didaftarkan oleh Ketua Jabatan</small></div>
+  <div id="gbtn"></div><div id="msg"></div>
+</div>
+<div id="app" hidden>
+  <nav id="nav"></nav>
+  <div id="content">
+    <header><h1 id="ttl">JPPI</h1><small id="usr"></small><button class="btn s sm" id="ins" hidden>Pasang</button><button class="btn s sm" id="out">Keluar</button></header>
+    <div class="off" id="off" hidden>Mod luar talian: data dipaparkan daripada simpanan terakhir (baca sahaja).</div>
+    <main id="main"></main>
+  </div>
+</div>
+<div id="hint" hidden></div>
+<dialog id="dlg"></dialog>
+<script>
+/* ====== KONFIGURASI: tukar dua nilai ini ====== */
+const API = 'GANTI_DENGAN_URL_WEB_APP_/exec';
+const CID = 'GANTI_DENGAN_OAUTH_CLIENT_ID.apps.googleusercontent.com';
+/* ============================================== */
+const $ = (s) => document.querySelector(s);
+const esc = (s) => String(s ?? '').replace(/[&<>"]/g, (c) => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const UN = {JPPI:'Jabatan (Umum)',INOVASI:'Inovasi',PENYELIDIKAN:'Penyelidikan',PENERBITAN:'Penerbitan',SEKPENGAJAR:'Sek Pengajar',HUBLUAR:'Hubungan Luar',DASAR:'Pembangunan Dasar',MAKLUMBALAS:'Maklum Balas Pelanggan'};
+const ICO = {home:'🏠',org:'👥',info:'📋',Inovasi:'💡',Penyelidikan:'🔬',Penerbitan:'📚',SekPengajar:'🏫',HubLuar:'🤝',Dasar:'📜',Staf:'⚙️',Kandungan:'✏️'};
+const parse = (c) => { const [k, t = 'txt', o = ''] = c.split('|'); return {k, t, o: o ? o.split(',') : []}; };
+let S = {me: null, schema: null, data: null, view: 'home'}, tok = null;
+
+/* ---------- Auth & API ---------- */
+function jwtExp(t) { try { return JSON.parse(atob(t.split('.')[1].replace(/-/g, '+').replace(/_/g, '/'))).exp * 1000; } catch (e) { return 0; } }
+async function post(o) {
+  const r = await fetch(API, {method: 'POST', headers: {'Content-Type': 'text/plain;charset=utf-8'}, body: JSON.stringify(Object.assign({t: tok}, o))});
+  return r.json();
+}
+function showLogin(m) {
+  $('#app').hidden = true; $('#login').hidden = false; $('#msg').textContent = m || ''; localStorage.removeItem('jt');
+  const go = () => { if (!window.google) return setTimeout(go, 300);
+    google.accounts.id.initialize({client_id: CID, callback: (r) => { tok = r.credential; localStorage.setItem('jt', tok); load(); }, auto_select: true});
+    google.accounts.id.renderButton($('#gbtn'), {theme: 'filled_blue', size: 'large', text: 'signin_with', width: 280}); };
+  go();
+}
+async function load() {
+  $('#login').hidden = true; let res;
+  try { res = await post({a: 'init'}); }
+  catch (e) { const c = localStorage.getItem('jc'); if (c) { Object.assign(S, JSON.parse(c)); $('#off').hidden = false; return start(); } return showLogin('Tiada sambungan internet.'); }
+  if (res.err === 'auth') return showLogin('Sesi tamat. Sila log masuk semula.');
+  if (res.err === 'noaccess') return showLogin('Emel ' + res.email + ' belum didaftarkan. Hubungi Ketua/Penolong Ketua Jabatan.');
+  if (res.err) return showLogin(res.err);
+  S.me = res.me; S.schema = res.schema; S.data = res.data; cache(); start();
+}
+const cache = () => { try { localStorage.setItem('jc', JSON.stringify({me: S.me, schema: S.schema, data: S.data})); } catch (e) {} };
+function start() {
+  $('#app').hidden = false; $('#usr').textContent = S.me.nama + ' · ' + S.me.role;
+  const mods = Object.keys(S.schema).filter((k) => !S.schema[k].admin);
+  const items = [['home', 'Utama'], ['org', 'Carta Org.'], ['info', 'Maklumat']].concat(mods.map((k) => [k, S.schema[k].title]));
+  if (S.me.admin) items.push(['Staf', 'Urus Staf'], ['Kandungan', 'Urus Kandungan']);
+  $('#nav').innerHTML = '<img src="icons/logo.png" alt="JPPI">' + items.map(([v, l]) => `<a data-v="${v}"><i>${ICO[v]}</i><span>${esc(l)}</span></a>`).join('');
+  S.titles = Object.fromEntries(items); go(S.view);
+}
+function go(v) {
+  S.view = v; document.querySelectorAll('#nav a').forEach((a) => a.classList.toggle('on', a.dataset.v === v));
+  $('#ttl').textContent = S.titles[v] === 'Utama' ? 'Dashboard JPPI IPGKTHO' : S.titles[v];
+  const f = {home, org, info}[v]; f ? f() : mod(v); scrollTo(0, 0);
+}
+document.addEventListener('click', (e) => { const a = e.target.closest('#nav a'); if (a) go(a.dataset.v); });
+$('#out').onclick = () => { localStorage.removeItem('jt'); localStorage.removeItem('jc'); tok = null; window.google && google.accounts.id.disableAutoSelect(); showLogin(); };
+
+/* ---------- Paparan ---------- */
+const sum = (a, k) => a.reduce((n, r) => n + (Number(r[k]) || 0), 0);
+const cnt = (a, k) => a.reduce((o, r) => { const v = r[k] || '-'; o[v] = (o[v] || 0) + 1; return o; }, {});
+function bars(o) { const m = Math.max(1, ...Object.values(o)); return Object.entries(o).map(([k, v]) => `<div class="bar"><span>${esc(k)}</span><div style="width:${Math.max(4, v / m * 55)}%"></div><span>${v}</span></div>`).join('') || '<small>Tiada data.</small>'; }
+function home() {
+  const d = S.data, ag = new Set(d.HubLuar.map((r) => r['Agensi']));
+  const pj = {}; d.Penerbitan.forEach((r) => pj[r['Jabatan'] || '-'] = (pj[r['Jabatan'] || '-'] || 0) + (Number(r['Bilangan']) || 0));
+  const cards = [['Inovasi', d.Inovasi.length, 'projek inovasi'], ['Penyelidikan', d.Penyelidikan.length, 'projek penyelidikan'], ['Penerbitan', sum(d.Penerbitan, 'Bilangan'), 'jumlah penerbitan'],
+    ['SekPengajar', d.SekPengajar.length, 'program sek pengajar'], ['HubLuar', ag.size, 'agensi · ' + sum(d.HubLuar, 'Bil. Terlibat') + ' terlibat'], ['Dasar', d.Dasar.length, 'dokumen dasar']];
+  $('#main').innerHTML = `<div class="grid">${cards.map(([v, n, l]) => `<div class="st" onclick="go('${v}')"><b>${n}</b><span>${S.schema[v].title}</span><small>${l}</small></div>`).join('')}</div>
+  <div class="two"><div class="card"><h3>Penerbitan mengikut Jabatan</h3>${bars(pj)}</div><div class="card"><h3>Penyelidikan mengikut Peringkat</h3>${bars(cnt(d.Penyelidikan, 'Peringkat'))}</div>
+  <div class="card"><h3>Program Sek Pengajar mengikut Daerah</h3>${bars(cnt(d.SekPengajar, 'Daerah'))}</div><div class="card"><h3>Dokumen Dasar mengikut Kategori</h3>${bars(cnt(d.Dasar, 'Kategori'))}</div></div>`;
+}
+function photo(u) { const m = /(?:\/d\/|[?&]id=)([\w-]{20,})/.exec(u || ''); return m ? `https://drive.google.com/thumbnail?id=${m[1]}&sz=w300` : u; }
+function org() {
+  const st = S.data.Staf.filter((s) => s['Aktif'] !== 'Tidak'), ids = new Set(st.map((s) => s['ID']));
+  const kids = (id) => st.filter((s) => s['Penyelia'] === id).sort((a, b) => a['Susunan'] - b['Susunan']);
+  const nd = (s) => { const k = kids(s['ID']), ini = s['Nama'].replace(/^(Dr\.?|Prof\.?)\s*/i, '')[0];
+    return `<li><div class="oc">${s['Gambar'] ? `<img class="av" src="${esc(photo(s['Gambar']))}" alt="" loading="lazy" referrerpolicy="no-referrer">` : `<div class="av">${esc(ini)}</div>`}<div><b>${esc(s['Nama'])}</b><small>${esc(s['Jawatan'])}</small>${s['Catatan'] ? `<em>${esc(s['Catatan'])}</em>` : ''}</div></div>${k.length ? '<ul>' + k.map(nd).join('') + '</ul>' : ''}</li>`; };
+  const roots = st.filter((s) => !s['Penyelia'] || !ids.has(s['Penyelia'])).sort((a, b) => a['Susunan'] - b['Susunan']);
+  $('#main').innerHTML = `<h2>Carta Organisasi JPPI</h2><div class="card org"><div class="tree"><ul>${roots.map(nd).join('')}</ul></div></div>${S.me.admin ? '<button class="btn" onclick="go(\'Staf\')">Kemas kini carta (Urus Staf)</button>' : ''}`;
+}
+const link = (t) => esc(t).replace(/(https?:\/\/[^\s<]+)/g, '<a href="$1" target="_blank" rel="noopener">$1</a>');
+function info() {
+  const k = S.data.Kandungan, by = (j, u) => k.filter((r) => r['Jenis'] === j && (!u || r['Unit'] === u)).sort((a, b) => a['Susunan'] - b['Susunan']);
+  const ob = by('Objektif'), us = Object.keys(UN).filter((u) => by('Tugas', u).length);
+  $('#main').innerHTML = `<div class="card"><h2>Objektif Jabatan</h2><ol>${ob.map((r) => `<li>${link(r['Teks'])}</li>`).join('')}</ol></div>
+  <div class="card"><h2>Tugas &amp; Fungsi JPPI</h2>${us.map((u, i) => `<details ${i ? '' : 'open'}><summary>${esc(u === 'JPPI' ? 'Jabatan JPPI' : 'Unit ' + UN[u])}</summary><ul>${by('Tugas', u).map((r) => `<li>${link(r['Teks'])}</li>`).join('')}</ul></details>`).join('')}</div>`;
+}
+const canW = (n) => { const s = S.schema[n]; return S.me.admin || (!s.admin && S.me.units.includes(s.unit)); };
+function cell(c, v) { return c.t === 'url' && v ? `<a href="${esc(v)}" target="_blank" rel="noopener">Buka</a>` : c.t === 'ref' ? esc((S.data.Staf.find((s) => s['ID'] === v) || {})['Nama'] || '') : esc(v); }
+function mod(n, q = '') {
+  const sc = S.schema[n], cols = sc.cols.map(parse).filter((c) => c.k !== 'ID' && !(n === 'Staf' && c.k === 'Catatan')), w = canW(n);
+  const rows = S.data[n].filter((r) => JSON.stringify(Object.values(r)).toLowerCase().includes(q.toLowerCase()));
+  let chips = '';
+  if (sc.grp) { const [g, s] = sc.grp, o = {}; S.data[n].forEach((r) => { const v = r[g] || '-'; o[v] = o[v] || [0, 0]; o[v][0]++; o[v][1] += Number(r[s]) || 0; });
+    chips = `<div class="chips">${Object.entries(o).map(([v, a]) => `<span>${esc(v)} · ${a[0]} rekod${s ? ' · ' + a[1] + ' ' + esc(s) : ''}</span>`).join('')}${s ? `<span><b>Jumlah ${esc(s)}: ${sum(S.data[n], s)}</b></span>` : ''}</div>`; }
+  $('#main').innerHTML = `<h2>${esc(sc.title)}</h2>${chips}<div class="tools"><input id="q" placeholder="Cari..." value="${esc(q)}">${w ? '<button class="btn" id="add">+ Tambah</button>' : ''}</div>
+  <div class="tw"><table><thead><tr><th>Bil.</th>${cols.map((c) => `<th>${esc(c.k)}</th>`).join('')}${w ? '<th></th>' : ''}</tr></thead><tbody>
+  ${rows.map((r, i) => `<tr><td data-l="Bil.">${i + 1}</td>${cols.map((c) => `<td data-l="${esc(c.k)}">${cell(c, r[c.k])}</td>`).join('')}${w ? `<td class="na"><button class="btn s sm" data-e="${r['ID']}">Ubah</button> <button class="btn d sm" data-x="${r['ID']}">Padam</button></td>` : ''}</tr>`).join('') || `<tr><td colspan="${cols.length + 2}">Tiada rekod.</td></tr>`}</tbody></table></div>`;
+  $('#q').oninput = (e) => { mod(n, e.target.value); const i = $('#q'); i.focus(); i.setSelectionRange(99, 99); };
+  if (w) { $('#add').onclick = () => form(n); $('#main').onclick = (e) => { const b = e.target.closest('button'); if (!b) return;
+    if (b.dataset.e) form(n, S.data[n].find((r) => r['ID'] === b.dataset.e)); if (b.dataset.x) del(n, b.dataset.x); }; }
+}
+function form(n, r = {}) {
+  const cols = S.schema[n].cols.map(parse).filter((c) => c.k !== 'ID');
+  const inp = (c) => { const v = r[c.k] ?? '', nm = `name="${esc(c.k)}"`;
+    if (c.t === 'sel') return `<select ${nm}><option value=""></option>${c.o.map((o) => `<option ${o === v ? 'selected' : ''}>${esc(o)}</option>`).join('')}</select>`;
+    if (c.t === 'ref') return `<select ${nm}><option value="">- Tiada -</option>${S.data.Staf.filter((s) => s['ID'] !== r['ID']).map((s) => `<option value="${s['ID']}" ${s['ID'] === v ? 'selected' : ''}>${esc(s['Nama'])}</option>`).join('')}</select>`;
+    if (c.t === 'area') return `<textarea rows="3" ${nm}>${esc(v)}</textarea>`;
+    return `<input ${nm} type="${{num: 'number', date: 'date', url: 'url', email: 'email'}[c.t] || 'text'}" value="${esc(v)}" ${c.t === 'num' ? 'step="any"' : ''}>`; };
+  const d = $('#dlg'); d.innerHTML = `<form method="dialog" id="f"><h3>${r['ID'] ? 'Ubah' : 'Tambah'} · ${esc(S.schema[n].title)}</h3>${cols.map((c) => `<label>${esc(c.k)}</label>${inp(c)}`).join('')}
+  ${n === 'Staf' ? '<small>Unit Tambahan: kod dipisahkan koma (cth. PENERBITAN,HUBLUAR). Emel Gmail diperlukan untuk log masuk.</small>' : ''}<div class="row"><button type="button" class="btn s" id="cx">Batal</button><button class="btn" id="sv">Simpan</button></div></form>`;
+  d.showModal(); $('#cx').onclick = () => d.close();
+  $('#f').onsubmit = async (e) => { e.preventDefault(); const o = {ID: r['ID']}; cols.forEach((c) => { const v = d.querySelector(`[name="${c.k}"]`).value.trim(); o[c.k] = c.t === 'num' && v !== '' ? Number(v) : v; });
+    $('#sv').disabled = true; $('#sv').textContent = 'Menyimpan...';
+    try { const res = await post({a: 'save', s: n, d: o}); if (res.err) throw res.err; const L = S.data[n], i = L.findIndex((x) => x['ID'] === res.row['ID']); i > -1 ? L[i] = res.row : L.push(res.row); cache(); d.close(); mod(n); }
+    catch (x) { alert('Gagal: ' + (x === 'auth' ? 'sesi tamat, log masuk semula' : x)); $('#sv').disabled = false; $('#sv').textContent = 'Simpan'; } };
+}
+async function del(n, id) {
+  if (!confirm('Padam rekod ini?')) return;
+  try { const res = await post({a: 'del', s: n, id}); if (res.err) throw res.err; S.data[n] = S.data[n].filter((r) => r['ID'] !== id); cache(); mod(n); } catch (x) { alert('Gagal: ' + x); }
+}
+
+/* ---------- PWA ---------- */
+let dp = null;
+addEventListener('beforeinstallprompt', (e) => { e.preventDefault(); dp = e; $('#ins').hidden = false; });
+$('#ins').onclick = async () => { dp.prompt(); await dp.userChoice; $('#ins').hidden = true; };
+if (/iPad|iPhone|iPod/.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1)) {
+  if (!navigator.standalone && !localStorage.getItem('hint')) { const h = $('#hint'); h.hidden = false; h.innerHTML = 'Pasang di iPhone/iPad: ketik <b>Kongsi ⬆️</b> dalam Safari, pilih <b>Tambah ke Skrin Utama</b>. <button class="btn s sm" id="hx">Tutup</button>'; $('#hx').onclick = () => { h.hidden = true; localStorage.setItem('hint', 1); }; }
+}
+if ('serviceWorker' in navigator) addEventListener('load', () => navigator.serviceWorker.register('sw.js'));
+addEventListener('online', () => $('#off').hidden = true);
+tok = localStorage.getItem('jt'); tok && jwtExp(tok) > Date.now() ? load() : showLogin();
+</script>
+</body>
+</html>

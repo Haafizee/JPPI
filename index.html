@@ -12,7 +12,6 @@
 <meta name="apple-mobile-web-app-title" content="JPPI">
 <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
 <link rel="icon" href="icons/icon-192.png">
-<script src="https://accounts.google.com/gsi/client" async defer></script>
 <style>
 :root{--b:#0b3a7a;--b2:#1566b8;--g:#d4a017;--bg:#f2f5fa;--t:#17243a;--m:#5b6b84;--l:#dbe3ef;--r:12px}
 *{box-sizing:border-box}html,body{margin:0}
@@ -73,7 +72,7 @@ details{border-bottom:1px solid var(--l);padding:8px 0}summary{cursor:pointer;fo
 <div id="login" hidden>
   <img src="icons/logo.png" alt="JPPI">
   <div><b>Sistem Dashboard JPPI IPGKTHO</b><br><small>Log masuk dengan akaun Gmail yang didaftarkan oleh Ketua Jabatan</small></div>
-  <div id="gbtn"></div><button class="btn s sm" id="alt">Log masuk cara alternatif (jika gagal dalam aplikasi)</button><div id="msg"></div>
+  <button class="btn" id="go">Log masuk dengan Google</button><div id="msg"></div>
 </div>
 <div id="app" hidden>
   <nav id="nav"></nav>
@@ -103,27 +102,29 @@ async function post(o) {
   finally { clearTimeout(to); }
 }
 const ld = (on, t) => { $('#ld').hidden = !on; if (t) $('#ldt').textContent = t; };
-/* Log masuk alternatif (redirect penuh) - sesuai untuk aplikasi PWA/iPhone yang menyekat popup */
-function altLogin() {
-  const n = (crypto.randomUUID ? crypto.randomUUID() : String(Math.random()).slice(2) + Date.now());
+/* Log masuk: SATU kaedah sahaja - lencongan penuh ke Google (berfungsi di pelayar, aplikasi PWA, Android, iPhone, iPad) */
+let busy = false;
+function googleLogin() {
+  if (busy) return; busy = true;
+  const n = (crypto.randomUUID ? crypto.randomUUID() : String(Math.random()).slice(2) + Date.now()), p = {client_id: CID,
+    redirect_uri: location.origin + location.pathname.replace(/index\.html$/, ''), response_type: 'id_token', scope: 'openid email profile', nonce: n};
+  const e = localStorage.getItem('je'); if (e) p.login_hint = e; else p.prompt = 'select_account';
   localStorage.setItem('jn', n); ld(true, 'Mengalihkan ke Google...');
-  location.href = 'https://accounts.google.com/o/oauth2/v2/auth?' + new URLSearchParams({client_id: CID, redirect_uri: location.origin + location.pathname.replace(/index\.html$/, ''), response_type: 'id_token', scope: 'openid email profile', nonce: n, prompt: 'select_account'});
+  location.href = 'https://accounts.google.com/o/oauth2/v2/auth?' + new URLSearchParams(p);
 }
 function fromHash() {
-  const m = /[#&]id_token=([^&]+)/.exec(location.hash); if (!m) return false;
-  const t = decodeURIComponent(m[1]); let p = {};
-  try { p = JSON.parse(atob(t.split('.')[1].replace(/-/g, '+').replace(/_/g, '/'))); } catch (e) {}
+  const er = /[#&]error=([^&]+)/.exec(location.hash);
+  const m = /[#&]id_token=([^&]+)/.exec(location.hash);
+  if (!er && !m) return false;
+  const t = m ? decodeURIComponent(m[1]) : ''; let p = {};
+  try { p = JSON.parse(atob(t.split('.')[1].replace(/-/g, '+').replace(/_/g, '/'))); } catch (x) {}
   history.replaceState(null, '', location.pathname + location.search);
-  if (p.nonce && p.nonce === localStorage.getItem('jn')) { tok = t; localStorage.setItem('jt', t); localStorage.removeItem('jn'); return true; }
-  return false;
+  if (er) { S.err = 'Google menolak log masuk: ' + decodeURIComponent(er[1]); return false; }
+  if (p.nonce && p.nonce === localStorage.getItem('jn')) { tok = t; localStorage.setItem('jt', t); if (p.email) localStorage.setItem('je', p.email); localStorage.removeItem('jn'); return true; }
+  S.err = 'Pengesahan log masuk tidak sah. Sila cuba lagi.'; return false;
 }
-let gsiOn = false;
 function showLogin(m) {
-  $('#app').hidden = true; $('#login').hidden = false; $('#msg').textContent = m || ''; localStorage.removeItem('jt');
-  const go = () => { if (!window.google) return setTimeout(go, 300);
-    if (!gsiOn) { google.accounts.id.initialize({client_id: CID, callback: (r) => { tok = r.credential; localStorage.setItem('jt', tok); ld(true, 'Mengesahkan akaun...'); load(); }, auto_select: true}); gsiOn = true; }
-    google.accounts.id.renderButton($('#gbtn'), {theme: 'filled_blue', size: 'large', text: 'signin_with', width: 280}); };
-  go();
+  busy = false; ld(false); $('#app').hidden = true; $('#login').hidden = false; $('#msg').textContent = m || ''; localStorage.removeItem('jt');
 }
 async function load() {
   ld(true, 'Memuatkan data... (kali pertama boleh ambil beberapa saat)');
@@ -153,7 +154,7 @@ function go(v) {
   const f = {home, org, info}[v]; f ? f() : mod(v); scrollTo(0, 0);
 }
 document.addEventListener('click', (e) => { const a = e.target.closest('#nav a'); if (a) go(a.dataset.v); });
-$('#out').onclick = () => { localStorage.removeItem('jt'); localStorage.removeItem('jc'); tok = null; window.google && google.accounts.id.disableAutoSelect(); showLogin(); };
+$('#out').onclick = () => { localStorage.removeItem('jt'); localStorage.removeItem('jc'); tok = null; localStorage.removeItem('je'); showLogin(); };
 
 /* ---------- Paparan ---------- */
 const sum = (a, k) => a.reduce((n, r) => n + (Number(r[k]) || 0), 0);
@@ -228,9 +229,9 @@ if (/iPad|iPhone|iPod/.test(navigator.userAgent) || (navigator.platform === 'Mac
 }
 if ('serviceWorker' in navigator) addEventListener('load', () => navigator.serviceWorker.register('sw.js'));
 addEventListener('online', () => $('#off').hidden = true);
-$('#alt').onclick = altLogin;
+$('#go').onclick = googleLogin;
 if (typeof API === 'undefined' || /PASTE/.test(API)) { showLogin('Fail config.js belum diisi: tampal URL Web App (berakhir /exec) pada pemalar API.'); } else
-if (fromHash()) load(); else { tok = localStorage.getItem('jt'); tok && jwtExp(tok) > Date.now() ? load() : showLogin(); }
+if (fromHash()) load(); else if (S.err) showLogin(S.err); else { tok = localStorage.getItem('jt'); tok && jwtExp(tok) > Date.now() ? load() : showLogin(); }
 </script>
 </body>
 </html>

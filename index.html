@@ -66,13 +66,14 @@ details{border-bottom:1px solid var(--l);padding:8px 0}summary{cursor:pointer;fo
 .av{width:62px;height:62px;border-radius:50%;object-fit:cover;border:2px solid var(--b);margin:0 auto 6px;background:#e6eefb;color:var(--b);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:20px}
 @media(max-width:700px){.tree ul{display:block;padding:0 0 0 16px;margin-left:24px;border-left:2px solid #aebbd1}.tree>ul{border:0;margin:0;padding:0}.tree li{text-align:left;padding:10px 0 0 4px}.tree li::before,.tree li::after,.tree ul ul::before{display:none}
 .oc{width:100%;display:flex;gap:10px;align-items:center;text-align:left}.oc .av{margin:0;flex:0 0 46px;width:46px;height:46px;font-size:16px}}
+.ld{position:fixed;inset:0;z-index:50;background:#ffffffe6;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;color:var(--b);font-weight:600;text-align:center;padding:20px}.sp{width:46px;height:46px;border:5px solid var(--l);border-top-color:var(--b);border-radius:50%;animation:rot 1s linear infinite}@keyframes rot{to{transform:rotate(360deg)}}
 </style>
 </head>
 <body>
 <div id="login" hidden>
   <img src="icons/logo.png" alt="JPPI">
   <div><b>Sistem Dashboard JPPI IPGKTHO</b><br><small>Log masuk dengan akaun Gmail yang didaftarkan oleh Ketua Jabatan</small></div>
-  <div id="gbtn"></div><div id="msg"></div>
+  <div id="gbtn"></div><button class="btn s sm" id="alt">Log masuk cara alternatif (jika gagal dalam aplikasi)</button><div id="msg"></div>
 </div>
 <div id="app" hidden>
   <nav id="nav"></nav>
@@ -82,6 +83,7 @@ details{border-bottom:1px solid var(--l);padding:8px 0}summary{cursor:pointer;fo
     <main id="main"></main>
   </div>
 </div>
+<div class="ld" id="ld" hidden><div class="sp"></div><div id="ldt">Memuatkan...</div></div>
 <div id="hint" hidden></div>
 <dialog id="dlg"></dialog>
 <script>
@@ -99,18 +101,38 @@ let S = {me: null, schema: null, data: null, view: 'home'}, tok = null;
 /* ---------- Auth & API ---------- */
 function jwtExp(t) { try { return JSON.parse(atob(t.split('.')[1].replace(/-/g, '+').replace(/_/g, '/'))).exp * 1000; } catch (e) { return 0; } }
 async function post(o) {
-  const r = await fetch(API, {method: 'POST', headers: {'Content-Type': 'text/plain;charset=utf-8'}, body: JSON.stringify(Object.assign({t: tok}, o))});
-  return r.json();
+  const ac = new AbortController(), to = setTimeout(() => ac.abort(), 45000);
+  try { const r = await fetch(API, {method: 'POST', signal: ac.signal, headers: {'Content-Type': 'text/plain;charset=utf-8'}, body: JSON.stringify(Object.assign({t: tok}, o))}); return await r.json(); }
+  finally { clearTimeout(to); }
+}
+const ld = (on, t) => { $('#ld').hidden = !on; if (t) $('#ldt').textContent = t; };
+/* Log masuk alternatif (redirect penuh) - sesuai untuk aplikasi PWA/iPhone yang menyekat popup */
+function altLogin() {
+  const n = (crypto.randomUUID ? crypto.randomUUID() : String(Math.random()).slice(2) + Date.now());
+  localStorage.setItem('jn', n); ld(true, 'Mengalihkan ke Google...');
+  location.href = 'https://accounts.google.com/o/oauth2/v2/auth?' + new URLSearchParams({client_id: CID, redirect_uri: location.origin + location.pathname.replace(/index\.html$/, ''), response_type: 'id_token', scope: 'openid email profile', nonce: n, prompt: 'select_account'});
+}
+function fromHash() {
+  const m = /[#&]id_token=([^&]+)/.exec(location.hash); if (!m) return false;
+  const t = decodeURIComponent(m[1]); let p = {};
+  try { p = JSON.parse(atob(t.split('.')[1].replace(/-/g, '+').replace(/_/g, '/'))); } catch (e) {}
+  history.replaceState(null, '', location.pathname + location.search);
+  if (p.nonce && p.nonce === localStorage.getItem('jn')) { tok = t; localStorage.setItem('jt', t); localStorage.removeItem('jn'); return true; }
+  return false;
 }
 let gsiOn = false;
 function showLogin(m) {
   $('#app').hidden = true; $('#login').hidden = false; $('#msg').textContent = m || ''; localStorage.removeItem('jt');
   const go = () => { if (!window.google) return setTimeout(go, 300);
-    if (!gsiOn) { google.accounts.id.initialize({client_id: CID, callback: (r) => { tok = r.credential; localStorage.setItem('jt', tok); load(); }, auto_select: true}); gsiOn = true; }
+    if (!gsiOn) { google.accounts.id.initialize({client_id: CID, callback: (r) => { tok = r.credential; localStorage.setItem('jt', tok); ld(true, 'Mengesahkan akaun...'); load(); }, auto_select: true}); gsiOn = true; }
     google.accounts.id.renderButton($('#gbtn'), {theme: 'filled_blue', size: 'large', text: 'signin_with', width: 280}); };
   go();
 }
 async function load() {
+  ld(true, 'Memuatkan data... (kali pertama boleh ambil beberapa saat)');
+  try { await load_(); } finally { ld(false); }
+}
+async function load_() {
   $('#login').hidden = true; let res;
   try { res = await post({a: 'init'}); }
   catch (e) { const c = localStorage.getItem('jc'); if (c) { Object.assign(S, JSON.parse(c)); $('#off').hidden = false; return start(); } return showLogin(navigator.onLine ? 'Tidak dapat hubungi pelayan Apps Script. Semak URL API dan tetapan Deploy (Who has access: Anyone).' : 'Tiada sambungan internet.'); }
@@ -209,7 +231,8 @@ if (/iPad|iPhone|iPod/.test(navigator.userAgent) || (navigator.platform === 'Mac
 }
 if ('serviceWorker' in navigator) addEventListener('load', () => navigator.serviceWorker.register('sw.js'));
 addEventListener('online', () => $('#off').hidden = true);
-tok = localStorage.getItem('jt'); tok && jwtExp(tok) > Date.now() ? load() : showLogin();
+$('#alt').onclick = altLogin;
+if (fromHash()) load(); else { tok = localStorage.getItem('jt'); tok && jwtExp(tok) > Date.now() ? load() : showLogin(); }
 </script>
 </body>
 </html>

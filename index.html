@@ -86,11 +86,8 @@ details{border-bottom:1px solid var(--l);padding:8px 0}summary{cursor:pointer;fo
 <div class="ld" id="ld" hidden><div class="sp"></div><div id="ldt">Memuatkan...</div></div>
 <div id="hint" hidden></div>
 <dialog id="dlg"></dialog>
+<script src="config.js"></script>
 <script>
-/* ====== KONFIGURASI: tukar dua nilai ini ====== */
-const API = 'https://haafizee.github.io/JPPI/'; /*GANTI_DENGAN_URL_WEB_APP_/exec*/
-const CID = '844920556695-9fdjgitgq8mo742nbpb8o492bu8bpot5.apps.googleusercontent.com'; /*GANTI_DENGAN_OAUTH_CLIENT_ID.apps.googleusercontent.com*/
-/* ============================================== */
 const $ = (s) => document.querySelector(s);
 const esc = (s) => String(s ?? '').replace(/[&<>"]/g, (c) => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 const UN = {JPPI:'Jabatan (Umum)',INOVASI:'Inovasi',PENYELIDIKAN:'Penyelidikan',PENERBITAN:'Penerbitan',SEKPENGAJAR:'Sek Pengajar',HUBLUAR:'Hubungan Luar',DASAR:'Pembangunan Dasar',MAKLUMBALAS:'Maklum Balas Pelanggan'};
@@ -232,6 +229,7 @@ if (/iPad|iPhone|iPod/.test(navigator.userAgent) || (navigator.platform === 'Mac
 if ('serviceWorker' in navigator) addEventListener('load', () => navigator.serviceWorker.register('sw.js'));
 addEventListener('online', () => $('#off').hidden = true);
 $('#alt').onclick = altLogin;
+if (typeof API === 'undefined' || /PASTE/.test(API)) { showLogin('Fail config.js belum diisi: tampal URL Web App (berakhir /exec) pada pemalar API.'); } else
 if (fromHash()) load(); else { tok = localStorage.getItem('jt'); tok && jwtExp(tok) > Date.now() ? load() : showLogin(); }
 </script>
 </body>

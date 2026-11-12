@@ -34,7 +34,7 @@ header h1{font-size:17px;margin:0;flex:1}header small{opacity:.85}
 main{padding:16px;max-width:1200px;margin:0 auto}
 h2{margin:6px 0 12px;color:var(--b)}
 .card{background:#fff;border:1px solid var(--l);border-radius:var(--r);padding:14px;margin-bottom:14px}
-.grid{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));margin-bottom:14px}
+.grid{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(185px,1fr));margin-bottom:14px}
 .st{background:#fff;border:1px solid var(--l);border-left:4px solid var(--g);border-radius:var(--r);padding:12px 14px;cursor:pointer}
 .st b{display:block;font-size:28px;color:var(--b);line-height:1.1}.st span{color:var(--m);font-size:13px}.st small{display:block;color:var(--m);font-size:11px}
 .two{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
@@ -66,6 +66,23 @@ details{border-bottom:1px solid var(--l);padding:8px 0}summary{cursor:pointer;fo
 @media(max-width:700px){.tree ul{display:block;padding:0 0 0 16px;margin-left:24px;border-left:2px solid #aebbd1}.tree>ul{border:0;margin:0;padding:0}.tree li{text-align:left;padding:10px 0 0 4px}.tree li::before,.tree li::after,.tree ul ul::before{display:none}
 .oc{width:100%;display:flex;gap:10px;align-items:center;text-align:left}.oc .av{margin:0;flex:0 0 46px;width:46px;height:46px;font-size:16px}}
 .ld{position:fixed;inset:0;z-index:50;background:#ffffffe6;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;color:var(--b);font-weight:600;text-align:center;padding:20px}.sp{width:46px;height:46px;border:5px solid var(--l);border-top-color:var(--b);border-radius:50%;animation:rot 1s linear infinite}@keyframes rot{to{transform:rotate(360deg)}}
+.hero{display:flex;align-items:center;gap:18px;flex-wrap:wrap;background:linear-gradient(110deg,#0b3a7a 0%,#1566b8 62%,#d4a017 140%);color:#fff;border-radius:16px;padding:18px 22px;margin-bottom:14px}
+.hero .lgbox{background:#fff;border-radius:12px;padding:6px 10px}.hero img{height:64px;display:block}.hero .ht{flex:1;min-width:220px}.hero h1{margin:0;font-size:clamp(17px,2.6vw,25px);line-height:1.25}.hero p{margin:4px 0 0;opacity:.9;font-size:13px}
+.yb{background:#ffffff26;border-radius:12px;padding:8px 18px;text-align:center}.yb small{display:block;font-size:11px;opacity:.9}.yb b{font-size:26px;line-height:1.1}
+.fh{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}.fh h3,.card h3{margin:0 0 10px;font-size:16px}.fh h3{margin:0}.sb{font-weight:400;color:var(--m);font-size:11px}
+.fg{display:grid;gap:10px;grid-template-columns:repeat(auto-fit,minmax(170px,1fr))}.fl{border-left:4px solid;border-radius:10px;background:#f7f9fd;padding:8px 10px}.fl span{display:block;font-size:10.5px;font-weight:700;color:var(--m);letter-spacing:.3px}
+.fl select{width:100%;margin-top:3px;padding:7px 8px;border:1px solid var(--l);border-radius:8px;background:#fff;font-size:14px}
+.st{position:relative}.st>span:not(.ic){display:block;padding-right:44px}.st .ic{position:absolute;right:12px;top:10px;font-size:22px;background:#eef3fb;border-radius:10px;width:38px;height:38px;display:flex;align-items:center;justify-content:center}.st small.up{color:#15803d;margin-top:4px}.st small.dwn{color:#b42318;margin-top:4px}
+.dw{display:flex;gap:16px;align-items:center;flex-wrap:wrap;justify-content:center}.dnt{width:170px;height:170px;flex:0 0 auto}.dt{font-size:22px;font-weight:700;fill:var(--b)}.ds{font-size:8px;fill:var(--m)}
+.lg{list-style:none;margin:0;padding:0;flex:1;min-width:190px}.lg li{display:flex;align-items:center;gap:8px;font-size:12.5px;margin:5px 0}.lg li span{flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.lg i,.lgd i{width:11px;height:11px;border-radius:3px;display:inline-block;flex:0 0 auto}
+.lgd{display:flex;gap:14px;flex-wrap:wrap;justify-content:center;font-size:12px;margin-top:8px}.lgd span{display:flex;align-items:center;gap:5px}
+.vc{display:flex;align-items:flex-end;gap:10px;min-height:200px;padding-top:6px}.vcc{flex:1;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;min-width:0}.vcc b{font-size:12px;color:var(--b)}
+.vb{width:100%;max-width:58px;display:flex;flex-direction:column-reverse;border-radius:7px 7px 0 0;overflow:hidden}.vb i{display:block}.vcc small{font-size:11px;color:var(--m);margin-top:5px;max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;text-align:center}
+.hr{display:flex;align-items:center;gap:10px;margin:7px 0;font-size:13px}.hl{width:34%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.hbar{flex:1;display:flex;height:18px;background:#eef3fb;border-radius:9px;overflow:hidden}.hbar i{display:block}.hr b{width:34px;text-align:right;color:var(--b)}
+.ln{width:100%;height:auto}.ax{font-size:11px;fill:var(--m)}
+.rk{display:flex;align-items:center;gap:10px;background:#f4f7fc;border-radius:10px;padding:9px 12px;margin-bottom:8px}.rk .rt{flex:1;font-size:13.5px;min-width:0}.rt small{display:block;color:var(--m);font-size:11px}.rk b{color:var(--b);font-size:17px}
+.n{width:26px;height:26px;border-radius:50%;background:#dfe6f3;color:#475569;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex:0 0 auto}.n0{background:#fde68a;color:#92400e}.n1{background:#e2e8f0}.n2{background:#fed7aa;color:#9a3412}
+.nd{color:var(--m);text-align:center;padding:30px 0;font-size:13px}.nt{color:var(--m);font-size:11.5px;text-align:center;margin:4px 0 12px}
 </style>
 </head>
 <body>
@@ -158,16 +175,86 @@ $('#out').onclick = () => { localStorage.removeItem('jt'); localStorage.removeIt
 
 /* ---------- Paparan ---------- */
 const sum = (a, k) => a.reduce((n, r) => n + (Number(r[k]) || 0), 0);
-const cnt = (a, k) => a.reduce((o, r) => { const v = r[k] || '-'; o[v] = (o[v] || 0) + 1; return o; }, {});
-function bars(o) { const m = Math.max(1, ...Object.values(o)); return Object.entries(o).map(([k, v]) => `<div class="bar"><span>${esc(k)}</span><div style="width:${Math.max(4, v / m * 55)}%"></div><span>${v}</span></div>`).join('') || '<small>Tiada data.</small>'; }
+/* ---------- Halaman Utama: infografik analisis ---------- */
+const PAL = ['#1566b8','#d4a017','#16a34a','#7c3aed','#dc2626','#06b6d4','#f97316','#0b3a7a','#64748b'];
+const J4 = ['Inovasi','Penyelidikan','Penerbitan','SekPengajar'];
+const PER = ['Institut','Daerah','Negeri','Kebangsaan','Antarabangsa'];
+const PO = ['Platinum','Emas','Perak','Gangsa','Johan','Penyertaan','Lain-lain'];
+const nod = '<div class="nd">Tiada data</div>';
+const yr = (r) => String(r['Tahun'] || String(r['Tarikh'] || '').slice(0, 4) || '');
+const jbt = (n, r) => n === 'SekPengajar' ? r['Jabatan Pelaksana'] : r['Jabatan'];
+const PCP = (t) => { t = String(t || '').toLowerCase(); return /platinum/.test(t) ? 'Platinum' : /emas|gold/.test(t) ? 'Emas' : /perak|silver/.test(t) ? 'Perak' : /gangsa|bronz/.test(t) ? 'Gangsa' : /johan|naib/.test(t) ? 'Johan' : /penyertaan/.test(t) ? 'Penyertaan' : 'Lain-lain'; };
+const grp = (a, fn, w = () => 1) => { const o = {}; a.forEach((r) => { const k = fn(r) || '-'; o[k] = (o[k] || 0) + (Number(w(r)) || 0); }); return o; };
+const srt = (o) => Object.entries(o).sort((a, b) => b[1] - a[1]);
+const tot = (v) => v.reduce((a, b) => a + b, 0);
+function fil(n, noY) {
+  const f = S.f;
+  return S.data[n].filter((r) => (noY || !f.y || yr(r) === f.y) && (!f.j || !J4.includes(n) || jbt(n, r) === f.j) && (!f.p || !['Inovasi', 'Penyelidikan'].includes(n) || r['Peringkat'] === f.p)
+    && (n !== 'Inovasi' || ((!f.k || r['Kategori'] === f.k) && (!f.c || PCP(r['Pencapaian']) === f.c))));
+}
+function donut(o, max = 6) {
+  let e = srt(o).filter((x) => x[1] > 0); if (!e.length) return nod;
+  if (e.length > max) { const r = tot(e.slice(max - 1).map((x) => x[1])); e = e.slice(0, max - 1).concat([['Lain-lain', r]]); }
+  const t = tot(e.map((x) => x[1])), C = 2 * Math.PI * 50; let cum = 0;
+  const arcs = e.map(([k, v], i) => { const l = v / t * C, s = `<circle cx="60" cy="60" r="50" fill="none" stroke="${PAL[i % 9]}" stroke-width="20" stroke-dasharray="${l} ${C - l}" stroke-dashoffset="${-cum}"><title>${esc(k)}: ${v}</title></circle>`; cum += l; return s; }).join('');
+  return `<div class="dw"><svg viewBox="0 0 120 120" class="dnt"><g transform="rotate(-90 60 60)">${arcs}</g><text x="60" y="60" text-anchor="middle" class="dt">${t}</text><text x="60" y="74" text-anchor="middle" class="ds">jumlah</text></svg>
+  <ul class="lg">${e.map(([k, v], i) => `<li><i style="background:${PAL[i % 9]}"></i><span>${esc(k)}</span><b>${v} · ${Math.round(v / t * 100)}%</b></li>`).join('')}</ul></div>`;
+}
+const legend = (ser, cl) => `<div class="lgd">${ser.map((s, i) => `<span><i style="background:${cl[i]}"></i>${esc(s)}</span>`).join('')}</div>`;
+function cols(rows, ser, cl) {
+  if (!rows.length || !rows.some((r) => tot(r[1]))) return nod;
+  const m = Math.max(1, ...rows.map((r) => tot(r[1])));
+  return `<div class="vc">${rows.map(([k, v]) => { const t = tot(v); return `<div class="vcc"><b>${t}</b><div class="vb" style="height:${Math.max(2, t / m * 150)}px">${v.map((x, i) => x ? `<i style="flex:${x};background:${cl[i]}" title="${esc(ser[i])}: ${x}"></i>` : '').join('')}</div><small title="${esc(k)}">${esc(k)}</small></div>`; }).join('')}</div>${ser.length > 1 ? legend(ser, cl) : ''}`;
+}
+function hb(rows, ser, cl) {
+  if (!rows.length) return nod;
+  const m = Math.max(1, ...rows.map((r) => tot(r[1])));
+  return rows.map(([k, v]) => `<div class="hr"><span class="hl" title="${esc(k)}">${esc(k)}</span><div class="hbar">${v.map((x, i) => x ? `<i style="width:${x / m * 100}%;background:${cl[i]}" title="${esc(ser[i])}: ${x}"></i>` : '').join('')}</div><b>${tot(v)}</b></div>`).join('') + legend(ser, cl);
+}
+function line(ys, ser) {
+  if (!ys.length) return nod;
+  const W = 620, H = 230, L = 34, R = 18, T = 18, B = 30, m = Math.max(...ser.flatMap((s) => s.v)), mx = Math.max(4, Math.ceil(m / 4) * 4);
+  const X = (i) => ys.length === 1 ? (W + L - R) / 2 : L + i * (W - L - R) / (ys.length - 1), Y = (v) => H - B - v / mx * (H - B - T);
+  const grid = [0, 1, 2, 3, 4].map((i) => `<line x1="${L}" x2="${W - R}" y1="${Y(mx * i / 4)}" y2="${Y(mx * i / 4)}" stroke="#e3e9f3" stroke-dasharray="3 3"/><text x="${L - 6}" y="${Y(mx * i / 4) + 4}" text-anchor="end" class="ax">${mx * i / 4}</text>`).join('');
+  const xs = ys.map((y, i) => `<text x="${X(i)}" y="${H - 8}" text-anchor="middle" class="ax">${esc(y)}</text>`).join('');
+  const ls = ser.map((s) => `<polyline fill="none" stroke="${s.c}" stroke-width="3" stroke-linejoin="round" points="${s.v.map((v, i) => X(i) + ',' + Y(v)).join(' ')}"/>${s.v.map((v, i) => `<circle cx="${X(i)}" cy="${Y(v)}" r="4.5" fill="${s.c}"><title>${esc(s.n)} ${esc(ys[i])}: ${v}</title></circle><text x="${X(i)}" y="${Y(v) - 9}" text-anchor="middle" class="ax" fill="${s.c}">${v}</text>`).join('')}`).join('');
+  return `<svg viewBox="0 0 ${W} ${H}" class="ln">${grid}${xs}${ls}</svg>${legend(ser.map((s) => s.n), ser.map((s) => s.c))}`;
+}
+const rank = (rows) => rows.length ? rows.map(([k, v, d], i) => `<div class="rk"><span class="n n${i}">${i + 1}</span><span class="rt">${esc(k)}${d ? `<small>${esc(d)}</small>` : ''}</span><b>${v}</b></div>`).join('') : nod;
+const setF = (k, v) => { S.f[k] = v; home(); };
 function home() {
-  const d = S.data, ag = new Set(d.HubLuar.map((r) => r['Agensi']));
-  const pj = {}; d.Penerbitan.forEach((r) => pj[r['Jabatan'] || '-'] = (pj[r['Jabatan'] || '-'] || 0) + (Number(r['Bilangan']) || 0));
-  const cards = [['Inovasi', d.Inovasi.length, 'projek inovasi'], ['Penyelidikan', d.Penyelidikan.length, 'projek penyelidikan'], ['Penerbitan', sum(d.Penerbitan, 'Bilangan'), 'jumlah penerbitan'],
-    ['SekPengajar', d.SekPengajar.length, 'program sek pengajar'], ['HubLuar', ag.size, 'agensi · ' + sum(d.HubLuar, 'Bil. Terlibat') + ' terlibat'], ['Dasar', d.Dasar.length, 'dokumen dasar']];
-  $('#main').innerHTML = `<div class="grid">${cards.map(([v, n, l]) => `<div class="st" onclick="go('${v}')"><b>${n}</b><span>${S.schema[v].title}</span><small>${l}</small></div>`).join('')}</div>
-  <div class="two"><div class="card"><h3>Penerbitan mengikut Jabatan</h3>${bars(pj)}</div><div class="card"><h3>Penyelidikan mengikut Peringkat</h3>${bars(cnt(d.Penyelidikan, 'Peringkat'))}</div>
-  <div class="card"><h3>Program Sek Pengajar mengikut Daerah</h3>${bars(cnt(d.SekPengajar, 'Daerah'))}</div><div class="card"><h3>Dokumen Dasar mengikut Kategori</h3>${bars(cnt(d.Dasar, 'Kategori'))}</div></div>`;
+  S.f = S.f || {}; const f = S.f, sy = window.scrollY, d = S.data;
+  const I = fil('Inovasi'), P = fil('Penyelidikan'), B = fil('Penerbitan'), K = fil('SekPengajar'), H = fil('HubLuar'), A = fil('Dasar');
+  const allY = [...new Set(Object.keys(d).filter((n) => n !== 'Staf' && n !== 'Kandungan').flatMap((n) => d[n].map(yr)).filter(Boolean))].sort().reverse();
+  const allJ = [...new Set(J4.flatMap((n) => d[n].map((r) => jbt(n, r))).filter(Boolean))].sort();
+  const kat = [...new Set(d.Inovasi.map((r) => r['Kategori']).filter(Boolean))].sort();
+  const gr = (n, w) => { const o = grp(fil(n, 1), yr, w), ks = Object.keys(o).filter((k) => k !== '-').sort(); if (ks.length < 2) return ''; const a = o[ks[ks.length - 1]], b = o[ks[ks.length - 2]]; if (!b) return ''; const p = Math.round((a - b) / b * 100);
+    return `<small class="${p >= 0 ? 'up' : 'dwn'}">${p >= 0 ? '▲' : '▼'} ${Math.abs(p)}% berbanding ${ks[ks.length - 2]}</small>`; };
+  const sel = (k, l, c, o, all) => `<div class="fl" style="border-color:${c}"><span>${l}</span><select onchange="setF('${k}',this.value)"><option value="">${all}</option>${o.map((x) => `<option ${f[k] === x ? 'selected' : ''}>${esc(x)}</option>`).join('')}</select></div>`;
+  const kp = [['Inovasi', '💡', I.length, 'projek inovasi', gr('Inovasi')], ['Penyelidikan', '🔬', P.length, P.filter((r) => r['Status'] === 'Selesai').length + ' selesai', gr('Penyelidikan')],
+    ['Penerbitan', '📚', sum(B, 'Bilangan'), 'jumlah penerbitan', gr('Penerbitan', (r) => r['Bilangan'])], ['SekPengajar', '🏫', K.length, new Set(K.map((r) => r['Nama Sek Pengajar'])).size + ' sekolah', gr('SekPengajar')],
+    ['HubLuar', '🤝', new Set(H.map((r) => r['Agensi'])).size, sum(H, 'Bil. Terlibat') + ' terlibat', gr('HubLuar')], ['Dasar', '📜', A.length, 'dokumen dasar', gr('Dasar')]];
+  const J = {}; const add = (n, rows, w, i) => rows.forEach((r) => { const k = jbt(n, r) || '-'; J[k] = J[k] || [0, 0, 0]; J[k][i] += w ? Number(r[w]) || 0 : 1; });
+  add('Inovasi', I, 0, 0); add('Penyelidikan', P, 0, 1); add('Penerbitan', B, 'Bilangan', 2);
+  const JR = Object.entries(J).sort((a, b) => tot(b[1]) - tot(a[1])), C3 = ['#1566b8', '#d4a017', '#16a34a'], S3 = ['Inovasi', 'Penyelidikan', 'Penerbitan'];
+  const tI = grp(fil('Inovasi', 1), yr), tP = grp(fil('Penyelidikan', 1), yr), tB = grp(fil('Penerbitan', 1), yr, (r) => r['Bilangan']);
+  const ys = [...new Set([...Object.keys(tI), ...Object.keys(tP), ...Object.keys(tB)])].filter((y) => y !== '-').sort();
+  const po = grp(I, (r) => PCP(r['Pencapaian'])), ag = {}; H.forEach((r) => { ag[r['Agensi']] = r['Jenis']; });
+  const hp = {}; H.forEach((r) => { const k = r['Agensi']; hp[k] = hp[k] || [0, 0]; hp[k][0] += Number(r['Bil. Terlibat']) || 0; hp[k][1]++; });
+  const cd = (t, b) => `<div class="card"><h3>${t}</h3>${b}</div>`;
+  $('#main').innerHTML = `<div class="hero"><div class="lgbox"><img src="icons/logo.png" alt="JPPI"></div><div class="ht"><h1>Dashboard Jabatan Perancangan, Penyelidikan &amp; Inovasi (JPPI)</h1><p>Institut Pendidikan Guru Kampus Tun Hussein Onn</p></div><div class="yb"><small>Tahun Semasa</small><b>${new Date().getFullYear()}</b></div></div>
+  <div class="card"><div class="fh"><h3>🔎 Penapis Data</h3><button class="btn s sm" onclick="S.f={};home()">Set semula</button></div><div class="fg">
+  ${sel('y', 'TAHUN', '#1566b8', allY, 'Semua Tahun')}${sel('j', 'JABATAN / UNIT', '#16a34a', allJ, 'Semua Jabatan')}${sel('p', 'PERINGKAT', '#dc2626', PER, 'Semua')}${sel('k', 'KATEGORI (INOVASI)', '#7c3aed', kat, 'Semua')}${sel('c', 'PENCAPAIAN (INOVASI)', '#d4a017', PO, 'Semua')}</div></div>
+  <div class="grid">${kp.map(([v, i, n, l, g]) => `<div class="st" onclick="go('${v}')"><span class="ic">${i}</span><span>${S.schema[v].title}</span><b>${n}</b><small>${l}</small>${g}</div>`).join('')}</div>
+  <div class="two">${cd('Inovasi mengikut Jabatan / Unit', donut(grp(I, (r) => r['Jabatan'])))}${cd('🏆 Top 5 Jabatan / Unit <small class="sb">inovasi + penyelidikan + penerbitan</small>', rank(JR.slice(0, 5).map(([k, v]) => [k, tot(v), 'Inovasi ' + v[0] + ' · Penyelidikan ' + v[1] + ' · Penerbitan ' + v[2]])))}</div>
+  <div class="card"><h3>📈 Trend Pencapaian Mengikut Tahun</h3>${line(ys, [{n: 'Inovasi', c: C3[0], v: ys.map((y) => tI[y] || 0)}, {n: 'Penyelidikan', c: C3[1], v: ys.map((y) => tP[y] || 0)}, {n: 'Penerbitan', c: C3[2], v: ys.map((y) => tB[y] || 0)}])}</div>
+  <div class="card"><h3>Perbandingan Inovasi, Penyelidikan &amp; Penerbitan mengikut Jabatan</h3>${hb(JR.slice(0, 8), S3, C3)}</div>
+  <div class="two">${cd('🏅 Pencapaian Inovasi', cols(PO.map((k) => [k, [po[k] || 0]]), ['Jumlah'], ['#d4a017']))}${cd('🌐 Peringkat: Inovasi &amp; Penyelidikan', cols(PER.map((k) => [k, [I.filter((r) => r['Peringkat'] === k).length, P.filter((r) => r['Peringkat'] === k).length]]), ['Inovasi', 'Penyelidikan'], ['#1566b8', '#d4a017']))}
+  ${cd('📚 Penerbitan mengikut Jenis', cols(srt(grp(B, (r) => r['Jenis'], (r) => r['Bilangan'])).map(([k, v]) => [k, [v]]), ['Jumlah'], ['#16a34a']))}${cd('🏫 Program Sek Pengajar mengikut Daerah', cols(srt(grp(K, (r) => r['Daerah'])).map(([k, v]) => [k, [v]]), ['Program'], ['#7c3aed']))}
+  ${cd('🤝 Agensi Hubungan Luar mengikut Jenis', donut(grp(Object.keys(ag), (k) => ag[k])))}${cd('Top 5 Agensi mengikut Bilangan Terlibat', rank(Object.entries(hp).sort((a, b) => b[1][0] - a[1][0]).slice(0, 5).map(([k, v]) => [k, v[0], v[1] + ' aktiviti'])))}
+  ${cd('📜 Dokumen Pembangunan Dasar', donut(grp(A, (r) => r['Kategori'])))}${cd('Aktiviti Sek Pengajar mengikut Jabatan Pelaksana', hb(srt(grp(K, (r) => r['Jabatan Pelaksana'])).slice(0, 6).map(([k, v]) => [k, [v]]), ['Aktiviti'], ['#7c3aed']))}</div>
+  <p class="nt">Pencapaian inovasi dikelaskan automatik daripada teks lajur Pencapaian (Platinum, Emas, Perak, Gangsa, Johan, Penyertaan). Penapis Kategori &amp; Pencapaian hanya terpakai pada Inovasi; graf trend sentiasa memaparkan semua tahun.</p>`;
+  scrollTo(0, sy);
 }
 function photo(u) { const m = /(?:\/d\/|[?&]id=)([\w-]{20,})/.exec(u || ''); return m ? `https://drive.google.com/thumbnail?id=${m[1]}&sz=w300` : u; }
 function org() {

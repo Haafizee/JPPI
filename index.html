@@ -32,7 +32,7 @@ button,input,select,textarea{font:inherit}
 #nav a i{font-style:normal;font-size:20px}#nav a.on{color:var(--b);background:#e6eefb;font-weight:600}
 #ft{position:fixed;z-index:6;bottom:0;left:208px;right:0;height:28px;background:#fff;border-top:1px solid var(--l);display:flex;align-items:center;justify-content:space-between;gap:10px;padding:0 14px;font-size:11px;color:var(--m);white-space:nowrap;overflow:hidden}#ft .fs1{display:none}
 @media(max-width:899px){#nav{left:0;right:0;bottom:0;overflow-x:auto;padding:4px 6px calc(4px + env(safe-area-inset-bottom));border-top:1px solid var(--l)}main{padding-bottom:128px!important}#ft{left:0;bottom:calc(var(--nh) + env(safe-area-inset-bottom));height:22px;font-size:10.5px;justify-content:center}#ft .fl1,#ft .fc{display:none}#ft .fs1{display:inline}}
-@media(min-width:900px){#nav{top:calc(var(--hh) + env(safe-area-inset-top));bottom:0;left:0;width:208px;flex-direction:column;padding:12px 10px 40px;border-right:1px solid var(--l);overflow-y:auto}#nav a{flex-direction:row;gap:10px;font-size:14px;padding:10px 12px}#content{margin-left:208px;padding-bottom:30px;height:calc(100vh - var(--hh));height:calc(100dvh - var(--hh));min-height:560px;display:flex;flex-direction:column}main{flex:1;min-height:0;overflow:auto;max-width:none;width:100%;margin:0;padding:10px 14px}}
+@media(min-width:900px){#nav{top:calc(var(--hh) + env(safe-area-inset-top));bottom:0;left:0;width:208px;flex-direction:column;padding:12px 10px 40px;border-right:1px solid var(--l);overflow-y:auto}#nav a{flex-direction:row;gap:10px;font-size:14px;padding:10px 12px}#content{margin-left:208px;padding-bottom:30px;height:calc(100vh - var(--hh));height:calc(100dvh - var(--hh));min-height:560px;display:flex;flex-direction:column}#content>main{flex:1;min-height:0;overflow:auto;max-width:none;width:100%;margin:0;padding:10px 14px}}
 @media(max-width:699px){.hd{padding-left:10px;padding-right:10px;gap:7px}.lgbox img{height:28px}.ht b{font-size:14px}.ht small{font-size:11px}.yb small,#usr,.hbt span{display:none}.yb{padding:3px 8px}.hbt{padding:0 9px}}
 #fbar{padding:9px 14px 0}.hi{width:32px;height:32px;border-radius:50%;border:1.5px solid #111;background:#fff;color:#111;display:flex;align-items:center;justify-content:center;flex:0 0 auto;cursor:pointer;padding:0;transition:background .15s,color .15s}.hi:hover,.hi.on{background:#111;color:#fff}.vd{width:1px;height:20px;background:var(--l);flex:0 0 auto}.bc{font-size:13px;font-weight:600;color:var(--b);white-space:nowrap}@media(max-width:699px){#fbar{padding:8px 10px 0}}
 main{padding:16px;max-width:1200px;margin:0 auto}
@@ -59,6 +59,16 @@ main.mp{display:flex;flex-direction:column;gap:8px}.mh{display:flex;align-items:
 .mh .chips{margin:0;flex:1;min-width:0;max-height:58px;overflow:auto}.mh input{width:210px;max-width:100%;padding:7px 11px;border:1px solid var(--l);border-radius:9px;font-size:13px;background:#fff}
 @media(min-width:900px){main.mp .tw{flex:1;min-height:0;overflow:auto}main.mp thead th{position:sticky;top:0;z-index:1}main.mp th,main.mp td{padding:7px 10px}}
 @media(max-width:699px){.mh{gap:6px}.mh h2{flex:1}.mh input{flex:1 0 100%;order:3;width:auto}}
+.pg{display:flex;align-items:center;gap:10px;flex-wrap:wrap;font-size:12.5px;color:var(--m)}.pg .pi{flex:1;min-width:120px}.pn{display:flex;gap:4px;align-items:center}
+.pb{min-width:30px;height:30px;border:1px solid var(--l);background:#fff;border-radius:8px;cursor:pointer;color:var(--t);font-size:13px;padding:0 6px}.pb:hover:not(:disabled){background:#eef3fb}.pb.on{background:var(--b);color:#fff;border-color:var(--b)}.pb:disabled{opacity:.4;cursor:default}
+.pe{padding:0 2px}.pc{padding:0 8px;font-weight:600;color:var(--t)}.ps select{border:1px solid var(--l);border-radius:8px;height:30px;background:#fff;padding:0 6px;font-size:12.5px;color:var(--t)}
+.ml{display:none}
+@media(max-width:699px){.tw{display:none}.ml{display:block;background:#fff;border:1px solid var(--l);border-radius:12px;overflow:hidden}
+.mr{border-bottom:1px solid var(--l)}.mr:last-child{border:0}.mt{display:flex;align-items:center;gap:8px;padding:8px 12px;cursor:pointer}.mt>div{flex:1;min-width:0}
+.mt b{display:block;font-size:13.5px;font-weight:600;line-height:1.3;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.mt small{display:block;font-size:11.5px;color:var(--m);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.mc{color:var(--m);transition:transform .2s;font-size:17px;line-height:1}.mr.x .mc{transform:rotate(90deg)}.mr.x{background:#f8fafd}
+.md{display:none;padding:2px 12px 10px;font-size:12.5px}.mr.x .md{display:block}.md>div{display:flex;gap:8px;padding:2px 0;line-height:1.4}.md>div>span{flex:0 0 86px;color:var(--m)}.md em{font-style:normal;min-width:0;overflow-wrap:anywhere}.md .ac{display:flex;gap:8px;margin-top:6px}
+.pg{justify-content:space-between;gap:6px}.pg .pi{flex:0 0 auto;min-width:0}}
 /* carian pantas */
 .sbx{position:relative;display:flex;align-items:center;gap:8px;flex:1 1 380px;max-width:460px;min-width:0;height:36px;padding:0 11px;border-radius:999px;background:#ffffff24;border:1px solid #ffffff40;color:#fff;transition:background .2s,box-shadow .2s}.sbx svg{flex:0 0 auto;opacity:.9}
 .sbx input{flex:1;min-width:0;border:0;outline:0;background:transparent;color:inherit;font-size:14px;height:100%;-webkit-appearance:none}.sbx input::placeholder{color:#ffffffc8}.sbx input::-webkit-search-cancel-button{display:none}
@@ -332,7 +342,7 @@ function home() {
   const lb = $('#lnb'); if (lb) lb.innerHTML = line(ys, tser, Math.max(200, lb.clientWidth), Math.max(120, lb.clientHeight));
   scrollTo(0, sy); $('#main').scrollTop = my;
 }
-let rz; addEventListener('resize', () => { clearTimeout(rz); rz = setTimeout(() => { if (S.data && !$('#app').hidden) { if (S.view === 'home') home(); else if (S.view === 'info') fitOrg(); } }, 200); });
+let rz, rzw = innerWidth; addEventListener('resize', () => { clearTimeout(rz); rz = setTimeout(() => { if (!S.data || $('#app').hidden) return; const wc = innerWidth !== rzw; rzw = innerWidth; if (S.view === 'home') home(); else if (S.view === 'info') fitOrg(); else if (wc && S.schema[S.view]) mod(S.view, S.last ? S.last.q : '', S.last ? S.last.p : 1); }, 200); });
 function photo(u) { const m = /(?:\/d\/|[?&]id=)([\w-]{20,})/.exec(u || ''); return m ? `https://drive.google.com/thumbnail?id=${m[1]}&sz=w300` : u; }
 const link = (t) => esc(t).replace(/(https?:\/\/[^\s<]+)/g, '<a href="$1" target="_blank" rel="noopener">$1</a>');
 function orgTree() {
@@ -345,7 +355,7 @@ function orgTree() {
 function fitOrg() {
   const w = $('#orgw'), t = $('#tree'), f = $('#tfit'); if (!w || !t) return;
   t.style.transform = 'none'; const tw = t.offsetWidth, th = t.offsetHeight, cw = w.clientWidth; if (cw < 60) return;
-  const fit = cw / tw, s = S.oz || (innerWidth < 700 ? Math.max(fit, 0.7) : Math.min(1.15, fit)); S.os = s;
+  const ch = w.clientHeight, fit = cw / tw, s = S.oz || (innerWidth < 700 ? Math.max(fit, 0.7) : Math.min(1.5, fit, ch > 80 ? ch / th : 9)); S.os = s;
   t.style.transform = `scale(${s})`; f.style.width = tw * s + 'px'; f.style.height = th * s + 'px'; w.scrollLeft = (w.scrollWidth - w.clientWidth) / 2;
 }
 function zoomOrg(d) { S.oz = d ? Math.min(1.6, Math.max(0.3, (S.os || 1) + d)) : null; fitOrg(); }
@@ -368,19 +378,38 @@ function info() {
 }
 const canW = (n) => { const s = S.schema[n]; return S.me.admin || (!s.admin && S.me.units.includes(s.unit)); };
 function cell(c, v) { return c.t === 'url' && v ? `<a href="${esc(v)}" target="_blank" rel="noopener">Buka</a>` : c.t === 'ref' ? esc((S.data.Staf.find((s) => s['ID'] === v) || {})['Nama'] || '') : esc(v); }
-function mod(n, q = '') {
-  const sc = S.schema[n], cols = sc.cols.map(parse).filter((c) => c.k !== 'ID' && !(n === 'Staf' && c.k === 'Catatan')), w = canW(n);
-  const rows = fil(n).filter((r) => JSON.stringify(Object.values(r)).toLowerCase().includes(q.toLowerCase()));
+const MT = {Inovasi: ['Tajuk Inovasi', ['Tahun', 'Peringkat', 'Pencapaian']], Penyelidikan: ['Tajuk Penyelidikan', ['Nama Penyelidik', 'Tahun', 'Peringkat']], Penerbitan: ['Tajuk', ['Tahun', 'Jabatan', 'Bilangan']],
+  SekPengajar: ['Nama Sek Pengajar', ['Tarikh', 'Daerah']], HubLuar: ['Agensi', ['Aktiviti / Program', 'Tarikh']], Dasar: ['Tajuk', ['Kategori', 'Tahun']], Staf: ['Nama', ['Jawatan', 'Unit']], Kandungan: ['Teks', ['Jenis', 'Unit']]};
+function mod(n, q = '', pg = 1) {
+  const sc = S.schema[n], cols = sc.cols.map(parse).filter((c) => c.k !== 'ID' && !(n === 'Staf' && c.k === 'Catatan')), w = canW(n), all = fil(n);
+  const rows = all.filter((r) => JSON.stringify(Object.values(r)).toLowerCase().includes(q.toLowerCase()));
   let chips = '';
-  if (sc.grp) { const [g, s] = sc.grp, o = {}; fil(n).forEach((r) => { const v = r[g] || '-'; o[v] = o[v] || [0, 0]; o[v][0]++; o[v][1] += Number(r[s]) || 0; });
-    chips = `<div class="chips">${Object.entries(o).map(([v, a]) => `<span>${esc(v)} · ${a[0]} rekod${s ? ' · ' + a[1] + ' ' + esc(s) : ''}</span>`).join('')}${s ? `<span><b>Jumlah ${esc(s)}: ${sum(fil(n), s)}</b></span>` : ''}</div>`; }
+  if (sc.grp) { const [g, s] = sc.grp, o = {}; all.forEach((r) => { const v = r[g] || '-'; o[v] = o[v] || [0, 0]; o[v][0]++; o[v][1] += Number(r[s]) || 0; });
+    chips = `<div class="chips">${Object.entries(o).map(([v, a]) => `<span>${esc(v)} · ${a[0]} rekod${s ? ' · ' + a[1] + ' ' + esc(s) : ''}</span>`).join('')}${s ? `<span><b>Jumlah ${esc(s)}: ${sum(all, s)}</b></span>` : ''}</div>`; }
+  const mob = innerWidth < 700, psz = S.psz || (mob ? 10 : 25), pages = Math.max(1, Math.ceil(rows.length / psz)); pg = Math.min(Math.max(1, pg), pages);
+  S.last = {n, q, p: pg}; const off = (pg - 1) * psz, part = rows.slice(off, off + psz);
+  const [tc, mc] = MT[n] || [cols[0].k, cols.slice(1, 4).map((c) => c.k)], val = (r, k) => k === 'Unit' ? (UN[r[k]] || r[k]) : r[k];
+  const bt = (l, p, dis, on) => `<button class="pb${on ? ' on' : ''}" data-p="${p}" ${dis ? 'disabled' : ''}>${l}</button>`;
+  let nums = ''; if (!mob) { const set = [...new Set([1, pages, pg - 1, pg, pg + 1])].filter((x) => x >= 1 && x <= pages).sort((a, b) => a - b); let last = 0;
+    set.forEach((x) => { if (x - last > 1) nums += '<span class="pe">…</span>'; nums += bt(x, x, false, x === pg); last = x; }); }
+  const sizes = [...new Set((mob ? [10, 20, 50] : [25, 50, 100]).concat([psz]))].sort((a, b) => a - b);
+  const pager = `<div class="pg"><span class="pi">${rows.length ? off + 1 : 0}–${Math.min(off + psz, rows.length)} daripada ${rows.length}</span><div class="pn">${bt('‹', pg - 1, pg < 2)}${mob ? `<span class="pc">${pg} / ${pages}</span>` : nums}${bt('›', pg + 1, pg >= pages)}</div>
+    <label class="ps"><select id="ps" aria-label="Baris setiap halaman">${sizes.map((x) => `<option value="${x}" ${x === psz ? 'selected' : ''}>${x} / halaman</option>`).join('')}</select></label></div>`;
+  const acts = (r) => w ? `<button class="btn s sm" data-e="${r['ID']}">Ubah</button> <button class="btn d sm" data-x="${r['ID']}">Padam</button>` : '';
   $('#main').className = 'mp';
   $('#main').innerHTML = `<div class="mh"><h2>${esc(sc.title)}<small>${rows.length} rekod</small></h2>${chips}<input id="q" placeholder="Cari dalam jadual..." value="${esc(q)}">${w ? '<button class="btn sm" id="add">+ Tambah</button>' : ''}</div>
   <div class="tw"><table><thead><tr><th>Bil.</th>${cols.map((c) => `<th>${esc(c.k)}</th>`).join('')}${w ? '<th></th>' : ''}</tr></thead><tbody>
-  ${rows.map((r, i) => `<tr><td data-l="Bil.">${i + 1}</td>${cols.map((c) => `<td data-l="${esc(c.k)}">${cell(c, r[c.k])}</td>`).join('')}${w ? `<td class="na"><button class="btn s sm" data-e="${r['ID']}">Ubah</button> <button class="btn d sm" data-x="${r['ID']}">Padam</button></td>` : ''}</tr>`).join('') || `<tr><td colspan="${cols.length + 2}">Tiada rekod.</td></tr>`}</tbody></table></div>`;
-  $('#q').oninput = (e) => { mod(n, e.target.value); const i = $('#q'); i.focus(); i.setSelectionRange(99, 99); };
-  if (w) { $('#add').onclick = () => form(n); $('#main').onclick = (e) => { const b = e.target.closest('button'); if (!b) return;
-    if (b.dataset.e) form(n, S.data[n].find((r) => r['ID'] === b.dataset.e)); if (b.dataset.x) del(n, b.dataset.x); }; }
+  ${part.map((r, i) => `<tr><td data-l="Bil.">${off + i + 1}</td>${cols.map((c) => `<td data-l="${esc(c.k)}">${cell(c, r[c.k])}</td>`).join('')}${w ? `<td class="na">${acts(r)}</td>` : ''}</tr>`).join('') || `<tr><td colspan="${cols.length + 2}">Tiada rekod.</td></tr>`}</tbody></table></div>
+  <div class="ml">${part.map((r) => `<div class="mr"><div class="mt"><div><b>${esc(r[tc] || r['Jenis'] || '-')}</b><small>${esc(mc.map((k) => val(r, k)).filter((x) => x !== '' && x != null).join(' · '))}</small></div><span class="mc">›</span></div>
+    <div class="md">${cols.map((c) => `<div><span>${esc(c.k)}</span><em>${cell(c, r[c.k])}</em></div>`).join('')}${w ? `<div class="ac">${acts(r)}</div>` : ''}</div></div>`).join('') || '<div class="nd">Tiada rekod</div>'}</div>${pager}`;
+  $('#q').oninput = (e) => { mod(n, e.target.value, 1); const i = $('#q'); i.focus(); i.setSelectionRange(99, 99); };
+  $('#ps').onchange = (e) => { S.psz = +e.target.value; mod(n, q, 1); };
+  if (w) $('#add').onclick = () => form(n);
+  $('#main').onclick = (e) => {
+    const p = e.target.closest('.pb'); if (p) { if (!p.disabled) mod(n, q, +p.dataset.p); return; }
+    const b = e.target.closest('button'); if (b && w) { if (b.dataset.e) form(n, S.data[n].find((r) => r['ID'] === b.dataset.e)); if (b.dataset.x) del(n, b.dataset.x); return; }
+    const t = e.target.closest('.mt'); if (t && !e.target.closest('a')) t.parentElement.classList.toggle('x');
+  };
 }
 function form(n, r = {}) {
   const cols = S.schema[n].cols.map(parse).filter((c) => c.k !== 'ID');
@@ -394,12 +423,12 @@ function form(n, r = {}) {
   d.showModal(); $('#cx').onclick = () => d.close();
   $('#f').onsubmit = async (e) => { e.preventDefault(); const o = {ID: r['ID']}; cols.forEach((c) => { const v = d.querySelector(`[name="${c.k}"]`).value.trim(); o[c.k] = c.t === 'num' && v !== '' ? Number(v) : v; });
     $('#sv').disabled = true; $('#sv').textContent = 'Menyimpan...';
-    try { const res = await post({a: 'save', s: n, d: o}); if (res.err) throw res.err; const L = S.data[n], i = L.findIndex((x) => x['ID'] === res.row['ID']); i > -1 ? L[i] = res.row : L.push(res.row); cache(); d.close(); mod(n); }
+    try { const res = await post({a: 'save', s: n, d: o}); if (res.err) throw res.err; const L = S.data[n], i = L.findIndex((x) => x['ID'] === res.row['ID']); i > -1 ? L[i] = res.row : L.push(res.row); cache(); d.close(); mod(n, S.last.q, S.last.p); }
     catch (x) { alert('Gagal: ' + (x === 'auth' ? 'sesi tamat, log masuk semula' : x)); $('#sv').disabled = false; $('#sv').textContent = 'Simpan'; } };
 }
 async function del(n, id) {
   if (!confirm('Padam rekod ini?')) return;
-  try { const res = await post({a: 'del', s: n, id}); if (res.err) throw res.err; S.data[n] = S.data[n].filter((r) => r['ID'] !== id); cache(); mod(n); } catch (x) { alert('Gagal: ' + x); }
+  try { const res = await post({a: 'del', s: n, id}); if (res.err) throw res.err; S.data[n] = S.data[n].filter((r) => r['ID'] !== id); cache(); mod(n, S.last.q, S.last.p); } catch (x) { alert('Gagal: ' + x); }
 }
 
 /* ---------- Carian pantas (header) ---------- */
